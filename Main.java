@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 class Main {
-  
   public interface Pilha {
     public int size();
     public boolean isEmpty();
@@ -35,10 +34,25 @@ class Main {
     return vetor;
   }
 
+  public static void inserir_elementos(int tamanho, int[] vetor, Scanner scanner) {
+    for(int i = 0; i < tamanho; i++) {
+      System.out.printf("%d: ", i);
+      vetor[i] = ler_inteiro(scanner);
+    }
+  }
+
+  public static void imprimir_elementos(int tamanho, int[] vetor, Scanner scanner) {
+    for(int i = 0; i < tamanho; i++) {
+      System.out.printf("%d: %d ", i, vetor[i]);
+    }
+  }
+
   public static void main(String[] args) {
     Scanner leitor = instanciar_scanner();
     int tamanho;
     tamanho = ler_inteiro(leitor);
     int[] vetor = declarar_vetor(tamanho);
+    inserir_elementos(tamanho, vetor, leitor);
+    imprimir_elementos(tamanho, vetor, leitor);
   }
 }
