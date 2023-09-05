@@ -1,13 +1,15 @@
 import java.util.Scanner;
 
 class Main {
-  public static void main(String[] args) {
-    System.out.println("Hello world!");
-    Scanner leitor = instanciar_scanner();
-    int tamanho;
-    tamanho = ler_inteiro(leitor);
+  
+  public interface Pilha {
+    public int size();
+    public boolean isEmpty();
+    public object top() throws PilhaVaziaException;
+    public void push(Object o);
+    public Object pop() throws PilhaVaziaException;
   }
-
+  
   public static Scanner instanciar_scanner() {
     Scanner retorno = new Scanner(System.in);
     return retorno;
@@ -26,5 +28,17 @@ class Main {
     retorno = scanner.nextInt();
     limpar_buffer_do_scanner(scanner);
     return retorno;
+  }
+
+  public static int[] declarar_vetor(int tamanho) {
+    int[] vetor = new int[tamanho];
+    return vetor;
+  }
+
+  public static void main(String[] args) {
+    Scanner leitor = instanciar_scanner();
+    int tamanho;
+    tamanho = ler_inteiro(leitor);
+    int[] vetor = declarar_vetor(tamanho);
   }
 }
