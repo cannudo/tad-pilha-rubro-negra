@@ -28,4 +28,11 @@ public class PilhaRubroNegra implements interface_ {
     public boolean estaVaziaNegro() {
         return this.tamanhoNegro == 0;
     }
+
+ public Object popNegro() throws PilhaEstaVaziaException {
+    if (estaVaziaNegro()) {
+        throw new PilhaEstaVaziaException("popNegro(): a pilha negra está vazia.");
+    }
+    return Object;
+ }   
 }
