@@ -41,12 +41,14 @@ class Main {
 
     public static void main(String[] args) {
         Scanner leitor = instanciar_scanner();
-        int tamanho = 0;
-        int[] vetor = null;
-        tamanho = ler_inteiro(leitor);
-        vetor = declarar_vetor(tamanho);
-        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra();
-        pilha_rubro_negra.top();
+        int capacidade = ler_inteiro(leitor);
+        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(capacidade);
+        //pilha_rubro_negra.top();
+        Object obj = new Object();
+        System.out.println(pilha_rubro_negra.pilha.length);
+        pilha_rubro_negra.push(100);
+        System.out.println(pilha_rubro_negra.top());
+        //System.out.println(pilha_rubro_negra.top().toString());
         desinstanciar_scanner(leitor);
     }
 }
