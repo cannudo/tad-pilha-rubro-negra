@@ -26,6 +26,16 @@ public class PilhaRubroNegra implements PilhaInterface {
         return this.pilha[indice];
     }
 
+    public void duplicar_capacidade() {
+        this.setCapacidade(this.getCapacidade() * 2);
+        Object[] pilha_auxiliar = new Object[this.getCapacidade()];
+        for (int i = 0; i < this.pilha.length; i++) {
+            pilha_auxiliar[i] = this.pilha[i];
+        }
+        this.pilha = pilha_auxiliar;
+        System.out.println("Capacidade duplicada.");
+    }
+
     public Object top() {
         Object elemento = null;
         if (!this.isEmpty()) {
@@ -49,9 +59,13 @@ public class PilhaRubroNegra implements PilhaInterface {
     }
 
     public void push(Object dado) {
+        System.out.println(this.getCapacidade()); // se -1 < 0 então
         if (this.getIndice_do_topo() < this.getCapacidade()) {
             this.indice_do_topo++;
             this.pilha[this.getIndice_do_topo()] = dado;
+        } else {
+            this.duplicar_capacidade();
+            this.push(dado);
         }
     }
 
