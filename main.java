@@ -41,6 +41,9 @@ class Main {
         pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3, 4 ]
         pilha_rubro_negra.push(5); // [ 1, 2, 3, 4, 5 ]
         System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getCapacidade());
+        System.out.println("Indice do topo: " + pilha_rubro_negra.getIndice_do_topo()); // 4
+        pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3, 4, 5, null, null, null ]
+        System.out.println("Elemento 4: " + pilha_rubro_negra.getElemento(4)); // 4
     }
 
     public static void main(String[] args) {
@@ -48,6 +51,8 @@ class Main {
         //int capacidade = ler_inteiro(leitor);
         PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(1);
         testes_de_push();
+        System.out.println(pilha_rubro_negra.isEmpty());
+        System.out.println(pilha_rubro_negra.pop());
 
         desinstanciar_scanner(leitor);
     }
