@@ -28,19 +28,20 @@ public class PilhaRubroNegra implements PilhaInterface {
 
     public void listar_elementos() {
         for (int i = 0; i < this.getCapacidade(); i++) {
-            System.out.printf(" [ " + this.getElemento(i).toString() + " ], ");
+            System.out.printf(" [ " + this.getElemento(i) + " ], ");
         }
         System.out.println();
     }
 
     public void duplicar_capacidade() {
+        int aux = this.getCapacidade();
         this.setCapacidade(this.getCapacidade() * 2);
         Object[] pilha_auxiliar = new Object[this.getCapacidade()];
         for (int i = 0; i < this.pilha.length; i++) {
             pilha_auxiliar[i] = this.pilha[i];
         }
         this.pilha = pilha_auxiliar;
-        System.out.println("Capacidade duplicada.");
+        System.out.println("Capacidade duplicada de " + aux + " para " + this.getCapacidade() + ".");
     }
 
     public Object top() {
