@@ -9,9 +9,9 @@ public interface PilhaInterface {
      * pilha @throws PilhaVaziaException;
      */
 
-   // public abstract int size();
-   // public abstract boolean isEmpty();
-   public abstract Object top() throws PilhaVaziaException;
-   // public abstract void push(Object objeto);
-   // public abstract Object pop() throws PilhaVaziaException;
+   public int size();
+   public boolean isEmpty();
+   public Object top() throws PilhaVaziaException;
+   public void push(Object objeto);
+   public abstract Object pop() throws PilhaVaziaException;
 }

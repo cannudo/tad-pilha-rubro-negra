@@ -41,12 +41,16 @@ class Main {
 
     public static void main(String[] args) {
         Scanner leitor = instanciar_scanner();
-        int capacidade = ler_inteiro(leitor);
-        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(capacidade);
-        //pilha_rubro_negra.top();
-        Object obj = new Object();
-        System.out.println(pilha_rubro_negra.pilha.length);
+        //int capacidade = ler_inteiro(leitor);
+        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(10);
+        System.out.println(pilha_rubro_negra.getCapacidade());
+        //Object obj = new Object();
+        //System.out.println(pilha_rubro_negra.pilha.length);
         pilha_rubro_negra.push(100);
+        pilha_rubro_negra.push(200);
+        System.out.println(pilha_rubro_negra.pop());
+        System.out.println(pilha_rubro_negra.getElemento(0));
+        System.out.println(pilha_rubro_negra.pop());
         System.out.println(pilha_rubro_negra.top());
         //System.out.println(pilha_rubro_negra.top().toString());
         desinstanciar_scanner(leitor);

@@ -1,28 +1,66 @@
+import java.util.Scanner;
+
 public class PilhaRubroNegra implements PilhaInterface {
-    private int tamanho;
-    private int capacidade;
-    private int indice;
-    public Object[] pilha;
+    int capacidade, indice_do_topo;
+    Object[] pilha;
 
     public PilhaRubroNegra(int capacidade) {
         this.capacidade = capacidade;
-        this.pilha = new Object[this.capacidade];
-        this.indice = -1;
+        this.indice_do_topo = -1;
+        this.pilha = new Object[capacidade];
     }
-    public boolean isEmpty() {
-        return this.indice == -1;
+
+    public int getIndice_do_topo() {
+        return this.indice_do_topo;
+    }
+
+    public void setCapacidade(int capacidade) {
+        this.capacidade = capacidade;
+    }
+
+    public int getCapacidade() {
+        return this.capacidade;
+    }
+
+    public Object getElemento(int indice) {
+        return this.pilha[indice];
     }
 
     public Object top() {
-        if (this.isEmpty()) {
-            throw new PilhaVaziaException("A pilha está vazia.");
+        Object elemento = null;
+        if (!this.isEmpty()) {
+            elemento = this.pilha[this.getIndice_do_topo()];
+        } else {
+            throw new PilhaVaziaException("top(): nenhum elemento para retornar.");
         }
-        return this.pilha[0];
+        return elemento;
     }
 
-    public void push(Object objeto) {
-        this.pilha[0] = objeto;
-        this.indice++;
-        System.out.println("Elemento inserido com sucesso.");
+    public Object pop() {
+        Object elemento = null;
+        if (!this.isEmpty()) {
+            elemento = this.pilha[this.getIndice_do_topo()];
+            this.pilha[this.getIndice_do_topo()] = null;
+            this.indice_do_topo--;
+        } else {
+            throw new PilhaVaziaException("pop(): nenhum elemento para remover.");
+        }
+        return elemento;
     }
+
+    public void push(Object dado) {
+        if (this.getIndice_do_topo() < this.getCapacidade()) {
+            this.indice_do_topo++;
+            this.pilha[this.getIndice_do_topo()] = dado;
+        }
+    }
+
+    public boolean isEmpty() {
+        return this.getIndice_do_topo() == -1;
+    }
+
+    public int size() {
+        return this.getCapacidade() + 1;
+    }
+
 }
