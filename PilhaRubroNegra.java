@@ -26,6 +26,13 @@ public class PilhaRubroNegra implements PilhaInterface {
         return this.pilha[indice];
     }
 
+    public void listar_elementos() {
+        for (int i = 0; i < this.getCapacidade(); i++) {
+            System.out.printf(" [ " + this.getElemento(i).toString() + " ], ");
+        }
+        System.out.println();
+    }
+
     public void duplicar_capacidade() {
         this.setCapacidade(this.getCapacidade() * 2);
         Object[] pilha_auxiliar = new Object[this.getCapacidade()];
