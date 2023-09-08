@@ -59,8 +59,7 @@ public class PilhaRubroNegra implements PilhaInterface {
     }
 
     public void push(Object dado) {
-        System.out.println(this.getCapacidade()); // se -1 < 0 então
-        if (this.getIndice_do_topo() < this.getCapacidade()) {
+        if (this.getIndice_do_topo() < this.getCapacidade() - 1) {
             this.indice_do_topo++;
             this.pilha[this.getIndice_do_topo()] = dado;
         } else {

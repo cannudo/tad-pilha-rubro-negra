@@ -41,10 +41,9 @@ class Main {
 
     public static void main(String[] args) {
         Scanner leitor = instanciar_scanner();
-        //int capacidade = ler_inteiro(leitor);
-        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(0);
-        System.out.println(pilha_rubro_negra.getCapacidade());
-        pilha_rubro_negra.push(1);
+        int capacidade = ler_inteiro(leitor);
+        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(capacidade);
+        
         desinstanciar_scanner(leitor);
     }
 }
