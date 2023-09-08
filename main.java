@@ -21,29 +21,19 @@ class Main {
         return retorno;
     }
 
-    public static int[] declarar_vetor(int tamanho) {
-        int[] vetor = new int[tamanho];
-        return vetor;
-    }
-
-    public static void inserir_elementos(int tamanho, int[] vetor, Scanner scanner) {
-        for (int i = 0; i < tamanho; i++) {
-            System.out.printf("%d: ", i);
-            vetor[i] = ler_inteiro(scanner);
-        }
-    }
-
-    public static void imprimir_elementos(int tamanho, int[] vetor, Scanner scanner) {
-        for (int i = 0; i < tamanho; i++) {
-            System.out.printf("%d: %d ", i, vetor[i]);
-        }
+    public static void imprimir_menu() {
+        System.out.println("1 - Inserir");
+        System.out.println("2 - Remover");
+        System.out.println("3 - Imprimir");
+        System.out.println("99 - Sair");
     }
 
     public static void main(String[] args) {
         Scanner leitor = instanciar_scanner();
         int capacidade = ler_inteiro(leitor);
         PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(capacidade);
-        
+        System.out.println("Pilha criada. Sua capacidade é " + pilha_rubro_negra.getCapacidade() + " e tem " + (pilha_rubro_negra.getIndice_do_topo() + 1) + " elementos.");
+
         desinstanciar_scanner(leitor);
     }
 }
