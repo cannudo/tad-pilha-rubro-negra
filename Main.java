@@ -21,48 +21,64 @@ class Main {
         return retorno;
     }
 
-    public static void testes_de_push(PilhaRubroNegra pilha_rubro_negra) {
-        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho()); // 1
-        System.out.println("Indice do topo: " + pilha_rubro_negra.get_top_index()); // -1
-        System.out.println("Pilha vazia? " + pilha_rubro_negra.isEmpty()); // true
-        // System.out.println("Pilha vazia? " + pilha_rubro_negra.top()); // PilhaVaziaException
-        pilha_rubro_negra.push(1); // empilhou 1
-        pilha_rubro_negra.listar_elementos(); // [ 1 ]
-        System.out.println("Indice do topo: " + pilha_rubro_negra.get_top_index()); // 0
-        System.out.println("Pilha vazia? " + pilha_rubro_negra.isEmpty()); // false
-        pilha_rubro_negra.push(2); // dobrou a capacidade de 1 para 2 e empilhou 2
-        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho()); // 2
-        pilha_rubro_negra.listar_elementos(); // [ 1, 2 ]
-        pilha_rubro_negra.push(3); // dobrou a capacidade de 2 para 4 e empilhou 3
-        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho()); // 4
-        pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3 ]
-        pilha_rubro_negra.push(4); // dobrou a capacidade de 4 para 8 e empilhou 4
-        pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3, 4 ]
-        pilha_rubro_negra.push(5); // [ 1, 2, 3, 4, 5 ]
+    public static void pedir_numero_maior_que_zero() {
+        System.out.print("Digite a capacidade da pilha (deve ser maior que zero): ");
+    }
+
+    public static void status_da_pilha(PilhaRubroNegra pilha_rubro_negra) {
+        System.out.println("");
         System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho());
-        System.out.println("Indice do topo: " + pilha_rubro_negra.get_top_index()); // 4
-        pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3, 4, 5, null, null, null ]
-        System.out.println("Elemento 4: " + pilha_rubro_negra.getElemento(4)); // 4
+        System.out.println("Indice do topo: " + pilha_rubro_negra.get_top_index());
+        System.out.println("Pilha vazia? " + pilha_rubro_negra.isEmpty());
+        System.out.print("Pilha: ");
+        pilha_rubro_negra.listar_elementos();
+        System.out.println("");
     }
 
-    public static void testes_de_pop(PilhaRubroNegra pilha_rubro_negra) {
-        System.out.println(pilha_rubro_negra.isEmpty()); // false
-        System.out.println(pilha_rubro_negra.pop()); // 5
-        pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3, 4, null, null, null, null ]
-        System.out.println(pilha_rubro_negra.pop()); // 4
-        System.out.println(pilha_rubro_negra.pop()); // 3
-        System.out.println(pilha_rubro_negra.pop()); // 2
-        System.out.println(pilha_rubro_negra.pop()); // 1
-        System.out.println(pilha_rubro_negra.isEmpty()); // true
-        System.out.println(pilha_rubro_negra.pop()); // PilhaVaziaException
-
+    public static void imprimir_menu() {
+        System.out.println("");
+        System.out.println("0 - Ver status da pilha");
+        System.out.println("1 - Adicionar elemento");
+        System.out.println("2 - Remover elemento");
+        System.out.println("99 - Sair");
     }
+
     public static void main(String[] args) {
         Scanner leitor = instanciar_scanner();
-        //int capacidade = ler_inteiro(leitor);
-        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(1);
-        testes_de_push(pilha_rubro_negra);
-        testes_de_pop(pilha_rubro_negra);
+        int capacidade = 0, opcao = 0;
+        while(capacidade <= 0) {
+            pedir_numero_maior_que_zero();
+            capacidade = ler_inteiro(leitor);
+        }
+        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(capacidade);
+
+        while(opcao != 99) {
+            imprimir_menu();
+            opcao = ler_inteiro(leitor);
+            switch(opcao) {
+                case 0:
+                    status_da_pilha(pilha_rubro_negra);
+                    break;
+                case 1:
+                    System.out.print("Digite um numero: ");
+                    int numero = ler_inteiro(leitor);
+                    pilha_rubro_negra.push(numero);
+                    break;
+                case 2:
+                    try {
+                        System.out.println("Elemento removido: " + pilha_rubro_negra.pop());
+                    } catch(PilhaVaziaException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                case 99:
+                    System.out.println("Saindo...");
+                    break;
+                default:
+                    System.out.println("Opcao invalida!");
+                    break;
+            }
+        }
         desinstanciar_scanner(leitor);
     }
 }

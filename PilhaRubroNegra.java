@@ -41,7 +41,9 @@ public class PilhaRubroNegra implements PilhaInterface {
             pilha_auxiliar[i] = this.pilha[i];
         }
         this.pilha = pilha_auxiliar;
+        System.out.println();
         System.out.println("Tamanho duplicado de " + tamanho_antigo + " para " + this.getTamanho() + ".");
+        System.out.println();
     }
 
     public Object top() {
