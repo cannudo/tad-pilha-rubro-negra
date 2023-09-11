@@ -21,8 +21,7 @@ class Main {
         return retorno;
     }
 
-    public static void testes_de_push() {
-        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(1);
+    public static void testes_de_push(PilhaRubroNegra pilha_rubro_negra) {
         System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getCapacidade()); // 1
         System.out.println("Indice do topo: " + pilha_rubro_negra.getIndice_do_topo()); // -1
         System.out.println("Pilha vazia? " + pilha_rubro_negra.isEmpty()); // true
@@ -50,7 +49,7 @@ class Main {
         Scanner leitor = instanciar_scanner();
         //int capacidade = ler_inteiro(leitor);
         PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(1);
-        testes_de_push();
+        testes_de_push(pilha_rubro_negra);
         System.out.println(pilha_rubro_negra.isEmpty());
         System.out.println(pilha_rubro_negra.pop());
 

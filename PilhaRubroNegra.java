@@ -41,6 +41,7 @@ public class PilhaRubroNegra implements PilhaInterface {
             pilha_auxiliar[i] = this.pilha[i];
         }
         this.pilha = pilha_auxiliar;
+        //this.indice_do_topo = aux - 1;
         System.out.println("Capacidade duplicada de " + aux + " para " + this.getCapacidade() + ".");
     }
 
