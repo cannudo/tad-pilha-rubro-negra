@@ -45,14 +45,24 @@ class Main {
         System.out.println("Elemento 4: " + pilha_rubro_negra.getElemento(4)); // 4
     }
 
+    public static void testes_de_pop(PilhaRubroNegra pilha_rubro_negra) {
+        System.out.println(pilha_rubro_negra.isEmpty()); // false
+        System.out.println(pilha_rubro_negra.pop()); // 5
+        pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3, 4, null, null, null, null ]
+        System.out.println(pilha_rubro_negra.pop()); // 4
+        System.out.println(pilha_rubro_negra.pop()); // 3
+        System.out.println(pilha_rubro_negra.pop()); // 2
+        System.out.println(pilha_rubro_negra.pop()); // 1
+        System.out.println(pilha_rubro_negra.isEmpty()); // true
+        System.out.println(pilha_rubro_negra.pop()); // PilhaVaziaException
+
+    }
     public static void main(String[] args) {
         Scanner leitor = instanciar_scanner();
         //int capacidade = ler_inteiro(leitor);
         PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(1);
         testes_de_push(pilha_rubro_negra);
-        System.out.println(pilha_rubro_negra.isEmpty());
-        System.out.println(pilha_rubro_negra.pop());
-
+        testes_de_pop(pilha_rubro_negra);
         desinstanciar_scanner(leitor);
     }
 }
