@@ -22,25 +22,25 @@ class Main {
     }
 
     public static void testes_de_push(PilhaRubroNegra pilha_rubro_negra) {
-        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getCapacidade()); // 1
-        System.out.println("Indice do topo: " + pilha_rubro_negra.getIndice_do_topo()); // -1
+        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho()); // 1
+        System.out.println("Indice do topo: " + pilha_rubro_negra.get_top_index()); // -1
         System.out.println("Pilha vazia? " + pilha_rubro_negra.isEmpty()); // true
         // System.out.println("Pilha vazia? " + pilha_rubro_negra.top()); // PilhaVaziaException
         pilha_rubro_negra.push(1); // empilhou 1
         pilha_rubro_negra.listar_elementos(); // [ 1 ]
-        System.out.println("Indice do topo: " + pilha_rubro_negra.getIndice_do_topo()); // 0
+        System.out.println("Indice do topo: " + pilha_rubro_negra.get_top_index()); // 0
         System.out.println("Pilha vazia? " + pilha_rubro_negra.isEmpty()); // false
         pilha_rubro_negra.push(2); // dobrou a capacidade de 1 para 2 e empilhou 2
-        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getCapacidade()); // 2
+        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho()); // 2
         pilha_rubro_negra.listar_elementos(); // [ 1, 2 ]
         pilha_rubro_negra.push(3); // dobrou a capacidade de 2 para 4 e empilhou 3
-        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getCapacidade()); // 4
+        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho()); // 4
         pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3 ]
         pilha_rubro_negra.push(4); // dobrou a capacidade de 4 para 8 e empilhou 4
         pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3, 4 ]
         pilha_rubro_negra.push(5); // [ 1, 2, 3, 4, 5 ]
-        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getCapacidade());
-        System.out.println("Indice do topo: " + pilha_rubro_negra.getIndice_do_topo()); // 4
+        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho());
+        System.out.println("Indice do topo: " + pilha_rubro_negra.get_top_index()); // 4
         pilha_rubro_negra.listar_elementos(); // [ 1, 2, 3, 4, 5, null, null, null ]
         System.out.println("Elemento 4: " + pilha_rubro_negra.getElemento(4)); // 4
     }

@@ -1,25 +1,25 @@
 import java.util.Scanner;
 
 public class PilhaRubroNegra implements PilhaInterface {
-    int capacidade, indice_do_topo;
-    Object[] pilha;
+    private int tamanho, top_index;
+    private Object[] pilha;
 
-    public PilhaRubroNegra(int capacidade) {
-        this.capacidade = capacidade;
-        this.indice_do_topo = -1;
-        this.pilha = new Object[capacidade];
+    public PilhaRubroNegra(int tamanho) {
+        this.tamanho = tamanho;
+        this.top_index = -1;
+        this.pilha = new Object[tamanho];
     }
 
-    public int getIndice_do_topo() {
-        return this.indice_do_topo;
+    public int get_top_index() {
+        return this.top_index;
     }
 
-    public void setCapacidade(int capacidade) {
-        this.capacidade = capacidade;
+    public void setTamanho(int tamanho) {
+        this.tamanho = tamanho;
     }
 
-    public int getCapacidade() {
-        return this.capacidade;
+    public int getTamanho() {
+        return this.tamanho;
     }
 
     public Object getElemento(int indice) {
@@ -27,28 +27,27 @@ public class PilhaRubroNegra implements PilhaInterface {
     }
 
     public void listar_elementos() {
-        for (int i = 0; i < this.getCapacidade(); i++) {
+        for (int i = 0; i < this.getTamanho(); i++) {
             System.out.printf(" [ " + this.getElemento(i) + " ], ");
         }
         System.out.println();
     }
 
-    public void duplicar_capacidade() {
-        int aux = this.getCapacidade();
-        this.setCapacidade(this.getCapacidade() * 2);
-        Object[] pilha_auxiliar = new Object[this.getCapacidade()];
+    private void duplicar_tamanho() {
+        int tamanho_antigo = this.getTamanho();
+        Object[] pilha_auxiliar = new Object[tamanho_antigo * 2];
+        this.setTamanho(tamanho_antigo * 2);
         for (int i = 0; i < this.pilha.length; i++) {
             pilha_auxiliar[i] = this.pilha[i];
         }
         this.pilha = pilha_auxiliar;
-        //this.indice_do_topo = aux - 1;
-        System.out.println("Capacidade duplicada de " + aux + " para " + this.getCapacidade() + ".");
+        System.out.println("Tamanho duplicado de " + tamanho_antigo + " para " + this.getTamanho() + ".");
     }
 
     public Object top() {
         Object elemento = null;
         if (!this.isEmpty()) {
-            elemento = this.pilha[this.getIndice_do_topo()];
+            elemento = this.pilha[this.get_top_index()];
         } else {
             throw new PilhaVaziaException("top(): nenhum elemento para retornar.");
         }
@@ -58,9 +57,9 @@ public class PilhaRubroNegra implements PilhaInterface {
     public Object pop() {
         Object elemento = null;
         if (!this.isEmpty()) {
-            elemento = this.pilha[this.getIndice_do_topo()];
-            this.pilha[this.getIndice_do_topo()] = null;
-            this.indice_do_topo--;
+            elemento = this.pilha[this.get_top_index()];
+            this.pilha[this.get_top_index()] = null;
+            this.top_index--;
         } else {
             throw new PilhaVaziaException("pop(): nenhum elemento para remover.");
         }
@@ -68,21 +67,22 @@ public class PilhaRubroNegra implements PilhaInterface {
     }
 
     public void push(Object dado) {
-        if (this.getIndice_do_topo() < this.getCapacidade() - 1) {
-            this.indice_do_topo++;
-            this.pilha[this.getIndice_do_topo()] = dado;
+        boolean tem_espaco = this.get_top_index() < this.getTamanho() - 1;
+        if (tem_espaco) {
+            this.top_index++;
+            this.pilha[this.get_top_index()] = dado;
         } else {
-            this.duplicar_capacidade();
+            this.duplicar_tamanho();
             this.push(dado);
         }
     }
 
     public boolean isEmpty() {
-        return this.getIndice_do_topo() == -1;
+        return this.get_top_index() == -1;
     }
 
     public int size() {
-        return this.getCapacidade() + 1;
+        return this.getTamanho() + 1;
     }
 
 }
