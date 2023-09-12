@@ -1,17 +1,17 @@
 import java.util.Scanner;
 
 public class PilhaRubroNegra implements PilhaInterface {
-    private int tamanho, top_index;
+    private int tamanho, top_index_rubro;
     private Object[] pilha;
 
     public PilhaRubroNegra(int tamanho) {
         this.tamanho = tamanho;
-        this.top_index = -1;
+        this.top_index_rubro = -1;
         this.pilha = new Object[tamanho];
     }
 
-    public int get_top_index() {
-        return this.top_index;
+    public int get_top_index_rubro() {
+        return this.top_index_rubro;
     }
 
     public void setTamanho(int tamanho) {
@@ -46,44 +46,44 @@ public class PilhaRubroNegra implements PilhaInterface {
         System.out.println();
     }
 
-    public Object top() {
+    public Object topRubro() {
         Object elemento = null;
-        if (!this.isEmpty()) {
-            elemento = this.pilha[this.get_top_index()];
+        if (!this.isEmptyRubro()) {
+            elemento = this.pilha[this.get_top_index_rubro()];
         } else {
-            throw new PilhaVaziaException("top(): nenhum elemento para retornar.");
+            throw new PilhaVaziaException("topRubro(): nenhum elemento para retornar.");
         }
         return elemento;
     }
 
-    public Object pop() {
+    public Object popRubro() {
         Object elemento = null;
-        if (!this.isEmpty()) {
-            elemento = this.pilha[this.get_top_index()];
-            this.pilha[this.get_top_index()] = null;
-            this.top_index--;
+        if (!this.isEmptyRubro()) {
+            elemento = this.pilha[this.get_top_index_rubro()];
+            this.pilha[this.get_top_index_rubro()] = null;
+            this.top_index_rubro--;
         } else {
-            throw new PilhaVaziaException("pop(): nenhum elemento para remover.");
+            throw new PilhaVaziaException("popRubro(): nenhum elemento para remover.");
         }
         return elemento;
     }
 
-    public void push(Object dado) {
-        boolean tem_espaco = this.get_top_index() < this.getTamanho() - 1;
+    public void pushRubro(Object dado) {
+        boolean tem_espaco = this.get_top_index_rubro() < this.getTamanho() - 1;
         if (tem_espaco) {
-            this.top_index++;
-            this.pilha[this.get_top_index()] = dado;
+            this.top_index_rubro++;
+            this.pilha[this.get_top_index_rubro()] = dado;
         } else {
             this.duplicar_tamanho();
-            this.push(dado);
+            this.pushRubro(dado);
         }
     }
 
-    public boolean isEmpty() {
-        return this.get_top_index() == -1;
+    public boolean isEmptyRubro() {
+        return this.get_top_index_rubro() == -1;
     }
 
-    public int size() {
+    public int sizeRubro() {
         return this.getTamanho() + 1;
     }
 

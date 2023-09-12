@@ -28,8 +28,8 @@ class Main {
     public static void status_da_pilha(PilhaRubroNegra pilha_rubro_negra) {
         System.out.println("");
         System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho());
-        System.out.println("Indice do topo: " + pilha_rubro_negra.get_top_index());
-        System.out.println("Pilha vazia? " + pilha_rubro_negra.isEmpty());
+        System.out.println("Indice do topo rubro: " + pilha_rubro_negra.get_top_index_rubro());
+        System.out.println("Pilha vazia? " + pilha_rubro_negra.isEmptyRubro());
         System.out.print("Pilha: ");
         pilha_rubro_negra.listar_elementos();
         System.out.println("");
@@ -62,11 +62,11 @@ class Main {
                 case 1:
                     System.out.print("Digite um numero: ");
                     int numero = ler_inteiro(leitor);
-                    pilha_rubro_negra.push(numero);
+                    pilha_rubro_negra.pushRubro(numero);
                     break;
                 case 2:
                     try {
-                        System.out.println("Elemento removido: " + pilha_rubro_negra.pop());
+                        System.out.println("Elemento removido: " + pilha_rubro_negra.popRubro());
                     } catch(PilhaVaziaException e) {
                         System.out.println(e.getMessage());
                     }
