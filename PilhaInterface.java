@@ -1,5 +1,4 @@
-public interface PilhaInterface {
-        
+public interface PilhaInterface {        
     /*
      * size(): @return número de elementos empilhados;
      * isEmpty(): @return booleano indicando se a pilha está vazia;
@@ -9,14 +8,9 @@ public interface PilhaInterface {
      * pilha @throws PilhaVaziaException;
      */
 
-   public int sizeRubro();
-   //public int sizeNegro();
-   public boolean isEmptyRubro();
-   //public boolean isEmptyNegro();
-   public Object topRubro() throws PilhaVaziaException;
-   //public Object topNegro() throws PilhaVaziaException;
-   public void pushRubro(Object objeto);
-   //public void pushNegro(Object objeto);
-   public Object popRubro() throws PilhaVaziaException;
-   //public Object popNegro() throws PilhaVaziaException;
+   public int size();
+   public boolean isEmpty();
+   public Object top() throws PilhaVaziaException;
+   public void push(Object objeto);
+   public abstract Object pop() throws PilhaVaziaException;
 }
