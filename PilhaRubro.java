@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class PilhaRubro implements PilhaInterface {
     private int tamanho, top_index;
     private Object[] pilha;
