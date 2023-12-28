@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class PilhaRubroNegra implements PilhaInterface {
+public class PilhaRubro implements PilhaInterface {
     private int tamanho, top_index;
     private Object[] pilha;
 
-    public PilhaRubroNegra(int tamanho) {
+    public PilhaRubro(int tamanho) {
         this.tamanho = tamanho;
         this.top_index = -1;
         this.pilha = new Object[tamanho];
