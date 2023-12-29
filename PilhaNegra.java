@@ -25,7 +25,7 @@ public class PilhaNegra implements PilhaInterface {
     }
 
     public void listar_elementos() {
-        for(int i = this.tamanho -1; i > 0; i--) {
+        for(int i = this.tamanho - 1; i >= 0; i--) {
             System.out.printf(" [ " + this.getElemento(i) + " ], ");
         }
         System.out.println();
@@ -33,9 +33,13 @@ public class PilhaNegra implements PilhaInterface {
 
     public void duplicar_tamanho() {
         int tamanho_antigo = this.getTamanho();
-        Object pilha_auxiliar = new Object[tamanho_antigo * 2];
-        for(int i = this.tamanho -1; i > 0; i--) {
-            pilha_auxiliar[i] = this.pilha[i];
+        Object[] pilha_auxiliar = new Object[tamanho_antigo * 2];
+        this.setTamanho(tamanho_antigo * 2);
+        for(int i = this.tamanho - 1; i >= 0; i--) {
+            System.out.println("i: " + i);
+        }
+        for(int i = tamanho_antigo - 1; i >= 0; i--) {
+            pilha_auxiliar[i] = i;
         }
         this.pilha = pilha_auxiliar;
         System.out.println();
@@ -44,12 +48,12 @@ public class PilhaNegra implements PilhaInterface {
     }
 
     public void push(Object dado) {
-        boolean tem_espaco = this.get_top_index == 0;
+        boolean tem_espaco = this.get_top_index() == 0;
         if (tem_espaco) {
             this.top_index--;
             this.pilha[this.get_top_index()] = dado;
         } else {
-            continue;
+            System.out.println("Pilha cheia.");
         }
     }
 
