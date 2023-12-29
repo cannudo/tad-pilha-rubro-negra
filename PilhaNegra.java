@@ -35,9 +35,6 @@ public class PilhaNegra implements PilhaInterface {
         int tamanho_antigo = this.getTamanho();
         Object[] pilha_auxiliar = new Object[tamanho_antigo * 2];
         this.setTamanho(tamanho_antigo * 2);
-        for(int i = this.tamanho - 1; i >= 0; i--) {
-            System.out.println("i: " + i);
-        }
         for(int i = tamanho_antigo - 1; i >= 0; i--) {
             pilha_auxiliar[i] = i;
         }
