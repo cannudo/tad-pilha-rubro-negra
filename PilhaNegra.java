@@ -31,6 +31,28 @@ public class PilhaNegra implements PilhaInterface {
         System.out.println();
     }
 
+    public void duplicar_tamanho() {
+        int tamanho_antigo = this.getTamanho();
+        Object pilha_auxiliar = new Object[tamanho_antigo * 2];
+        for(int i = this.tamanho -1; i > 0; i--) {
+            pilha_auxiliar[i] = this.pilha[i];
+        }
+        this.pilha = pilha_auxiliar;
+        System.out.println();
+        System.out.println("Tamanho duplicado de " + tamanho_antigo + " para " + this.getTamanho() + ".");
+        System.out.println();
+    }
+
+    public void push(Object dado) {
+        boolean tem_espaco = this.get_top_index == 0;
+        if (tem_espaco) {
+            this.top_index--;
+            this.pilha[this.get_top_index()] = dado;
+        } else {
+            continue;
+        }
+    }
+
     public boolean isEmpty() {
         return this.get_top_index() == this.tamanho;
     }
