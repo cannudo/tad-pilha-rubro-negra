@@ -45,7 +45,7 @@ public class PilhaNegra implements PilhaInterface {
     }
 
     public void push(Object dado) {
-        boolean tem_espaco = this.get_top_index() == 0;
+        boolean tem_espaco = this.get_top_index() > 0;
         if (tem_espaco) {
             this.top_index--;
             this.pilha[this.get_top_index()] = dado;
