@@ -7,6 +7,23 @@ public class PilhaNegra {
         this.pilha = new Object[tamanho];
     }
 
+    public void push(Object dado) {
+        if(this.isFull()) {
+            System.out.println("Tá cheio");
+        } else {
+            this.decrementarTop_index();
+            this.pilha[getTop_index()] = dado;
+        }
+    }
+
+    public Object top() {
+        if(this.isEmpty()) {
+            throw new PilhaVaziaException("PilhaNegra.top(): nenhum elemento para remover.");
+        } else {
+            return this.pilha[this.getTop_index()];
+        }
+    }
+
     public int getTop_index() {
         return this.top_index;
     }
