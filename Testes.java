@@ -5,6 +5,9 @@ public class Testes {
             pilha_negra.push(i);
         }
         pilha_negra.push(99);
+        pilha_negra.push(98);
+
+        System.out.println("PilhaNegra.top(): " + pilha_negra.top());
         pilha_negra.status();
     }
 }

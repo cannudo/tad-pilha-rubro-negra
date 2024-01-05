@@ -9,7 +9,6 @@ public class PilhaNegra {
 
     public void push(Object dado) {
         if(this.isFull()) {
-            System.out.println("Tá cheio");
             int tamanho_antigo = this.getTamanho();
             int tamanhoDobrado = this.dobroDoTamanho();
             Object[] aux = new Object[tamanhoDobrado];            
@@ -19,9 +18,8 @@ public class PilhaNegra {
             }
             this.pilha = aux;
             this.setTamanho(this.dobroDoTamanho());
-            this.setTop_index(tamanho_antigo - 1);
+            this.setTop_index(tamanho_antigo);
             this.push(dado);
-            System.out.println("STOP POINT");
         } else {
             this.decrementarTop_index();
             this.pilha[getTop_index()] = dado;
