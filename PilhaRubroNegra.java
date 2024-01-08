@@ -9,8 +9,28 @@ public class PilhaRubroNegra {
         this.pilha = new String[capacidade];
     }
 
+    public String topRubro() {
+        if(this.isEmpty()) {
+            throw new PilhaVaziaException("topRubro(): Pilha vazia.");
+        } else {
+            return this.pilha[this.topIndexRubro];
+        }
+    }
+
+    public String topNegro() {
+        if(this.isEmpty()) {
+            throw new PilhaVaziaException("topNegro(): Pilha vazia.");
+        } else {
+            return this.pilha[this.topIndexNegro];
+        }
+    }
+
     public boolean isEmpty() {
         return (this.topIndexNegro == -1 && this.topIndexRubro == this.capacidade);
+    }
+
+    public boolean isFull() {
+        return (this.topIndexRubro + 1 == this.topIndexNegro);
     }
 
     public int getCapacidade() {
@@ -34,8 +54,11 @@ public class PilhaRubroNegra {
         System.out.println("TopIndexNegro: " + this.getTopIndexNegro());
         System.out.println("TopIndexRubro: " + this.getTopIndexRubro());
         System.out.println("Está vazia? " + (this.isEmpty() ? "Sim" : "Não"));
-        System.out.println("Pilha: ");
-        this.listarStrings();
+        System.out.println("Está cheia? " + (this.isFull() ? "Sim" : "Não"));
+        if(!this.isEmpty()) {
+            System.out.println("Pilha: ");
+            this.listarStrings();
+        }
     }
 
     public void listarStrings() {
