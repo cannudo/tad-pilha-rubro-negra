@@ -4,9 +4,19 @@ public class PilhaRubroNegra {
 
     public PilhaRubroNegra(int capacidade) {
         this.capacidade = capacidade;
-        this.topIndexNegro = -1;
-        this.topIndexRubro = capacidade;
+        this.topIndexRubro = -1;
+        this.topIndexNegro = capacidade;
         this.pilha = new String[capacidade];
+    }
+
+
+    public void pushNegro(String dado) {
+        if (!this.isFull()) {
+            this.topIndexNegro--;
+            this.pilha[this.topIndexNegro] = dado;
+        } else {
+            System.out.println("pushNegro(): Pilha cheia.");
+        }
     }
 
     public String topRubro() {
@@ -80,6 +90,11 @@ public class PilhaRubroNegra {
 
     public static void main(String[] args) {
         PilhaRubroNegra teste = new PilhaRubroNegra(4);
+        teste.pushNegro("😊");
+        teste.pushNegro("🚀");
+        teste.pushNegro("👍");
+        teste.pushNegro("👌");
+        teste.pushNegro("👎"); // linha 1 da saída
         teste.status();
     }
 }
