@@ -25,13 +25,13 @@ class Main {
         System.out.print("Digite a capacidade da pilha (deve ser maior que zero): ");
     }
 
-    public static void status_da_pilha(PilhaRubroNegra pilha_rubro_negra) {
+    public static void status_da_pilha(PilhaRubro pilha_rubro) {
         System.out.println("");
-        System.out.println("Capacidade da pilha: " + pilha_rubro_negra.getTamanho());
-        System.out.println("Indice do topo: " + pilha_rubro_negra.get_top_index());
-        System.out.println("Pilha vazia? " + pilha_rubro_negra.isEmpty());
+        System.out.println("Capacidade da pilha: " + pilha_rubro.getTamanho());
+        System.out.println("Indice do topo rubro: " + pilha_rubro.get_top_index());
+        System.out.println("Pilha vazia? " + pilha_rubro.isEmpty());
         System.out.print("Pilha: ");
-        pilha_rubro_negra.listar_elementos();
+        pilha_rubro.listar_elementos();
         System.out.println("");
     }
 
@@ -50,23 +50,23 @@ class Main {
             pedir_numero_maior_que_zero();
             capacidade = ler_inteiro(leitor);
         }
-        PilhaRubroNegra pilha_rubro_negra = new PilhaRubroNegra(capacidade);
+        PilhaRubro pilha_rubro = new PilhaRubro(capacidade);
 
         while(opcao != 99) {
             imprimir_menu();
             opcao = ler_inteiro(leitor);
             switch(opcao) {
                 case 0:
-                    status_da_pilha(pilha_rubro_negra);
+                    status_da_pilha(pilha_rubro);
                     break;
                 case 1:
                     System.out.print("Digite um numero: ");
                     int numero = ler_inteiro(leitor);
-                    pilha_rubro_negra.push(numero);
+                    pilha_rubro.push(numero);
                     break;
                 case 2:
                     try {
-                        System.out.println("Elemento removido: " + pilha_rubro_negra.pop());
+                        System.out.println("Elemento removido: " + pilha_rubro.pop());
                     } catch(PilhaVaziaException e) {
                         System.out.println(e.getMessage());
                     }

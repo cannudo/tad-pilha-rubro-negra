@@ -1,5 +1,4 @@
-public interface PilhaInterface {
-        
+public interface PilhaInterface {        
     /*
      * size(): @return número de elementos empilhados;
      * isEmpty(): @return booleano indicando se a pilha está vazia;
