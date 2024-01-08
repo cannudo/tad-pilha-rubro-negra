@@ -1,4 +1,4 @@
-public class PilhaNegra {
+public class PilhaNegra implements PilhaInterface {
     private int tamanho, top_index;
     public Object[] pilha;
 
@@ -24,6 +24,22 @@ public class PilhaNegra {
             this.decrementarTop_index();
             this.pilha[getTop_index()] = dado;
         }
+    }
+
+    public Object pop() {
+        Object elemento = null;
+        if (!this.isEmpty()) {
+            elemento = this.pilha[this.getTop_index()];
+            this.pilha[this.getTop_index()] = null;
+            this.top_index++;
+        } else {
+            throw new PilhaVaziaException("pop(): nenhum elemento para remover.");
+        }
+        return elemento;
+    }
+
+    public int size() {
+        return this.getTamanho();
     }
 
     public Object top() {
@@ -67,7 +83,7 @@ public class PilhaNegra {
     }
 
     public void status() {
-        System.out.println("Tamanho da pilha: " + tamanho);
+        System.out.println("Tamanho da pilha: " + size());
         System.out.println("Índice do topo: " + top_index);
         System.out.println("A pilha está cheia? " + (this.isFull() ? "Sim" : "Não"));
         System.out.println("A pilha está vazia? " + (this.isEmpty() ? "Sim" : "Não"));

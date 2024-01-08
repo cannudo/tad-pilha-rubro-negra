@@ -4,10 +4,9 @@ public class Testes {
         for(int i = pilha_negra.getTamanho() - 1; i > -1; i--) {
             pilha_negra.push(i);
         }
-        pilha_negra.push(99);
-        pilha_negra.push(98);
-
-        System.out.println("PilhaNegra.top(): " + pilha_negra.top());
+        for(int i = pilha_negra.getTamanho() - 1; i > -1; i--) {
+            pilha_negra.pop();
+        }
         pilha_negra.status();
     }
 }
