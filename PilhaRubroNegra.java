@@ -9,13 +9,37 @@ public class PilhaRubroNegra {
         this.pilha = new String[capacidade];
     }
 
+    public void duplicarTamanho() {
+        int tamanho_antigo = this.getCapacidade();
+        int novo_tamanho = tamanho_antigo * 2;
+        String[] auxiliar = new String[novo_tamanho];
+        for(int i = 0; i < this.getContagemRubrosEmpilhados(); i++) {
+            auxiliar[i] = pilha[i];
+        }
+        for(int i = getContagemNegrosEmpilhados() -1; i > -1; i--) {
+            auxiliar[novo_tamanho - i - 1] = pilha[tamanho_antigo - i - 1];
+        }        
+        this.setCapacidade(novo_tamanho);
+        this.pilha = auxiliar;
+        this.topIndexNegro = novo_tamanho - 1;
+        this.topIndexRubro = this.getContagemRubrosEmpilhados() - 1;
+    }
+    
+    public int getContagemNegrosEmpilhados() {
+        return this.getCapacidade() - this.getTopIndexNegro();
+    }
+
+    public int getContagemRubrosEmpilhados() {
+        return this.getTopIndexRubro() + 1;
+    }
 
     public void pushRubro(String dado) {
         if(!this.isFull()) {
             this.topIndexRubro++;
             this.pilha[this.topIndexRubro] = dado;
         } else {
-            System.out.println("pushRubro(): Pilha cheia.");
+            this.duplicarTamanho();
+            this.pushRubro(dado);
         }
     }
 
@@ -24,7 +48,8 @@ public class PilhaRubroNegra {
             this.topIndexNegro--;
             this.pilha[this.topIndexNegro] = dado;
         } else {
-            System.out.println("pushNegro(): Pilha cheia.");
+            this.duplicarTamanho();
+            this.pushNegro(dado);
         }
     }
 
@@ -77,6 +102,8 @@ public class PilhaRubroNegra {
         if(!this.isEmpty()) {
             System.out.println("Pilha: ");
             this.listarStrings();
+            System.out.println("Contagem de dados rubros empilhados: " + this.getContagemRubrosEmpilhados());
+            System.out.println("Contagem de dados negros empilhados: " + this.getContagemNegrosEmpilhados());
         }
     }
 
@@ -99,11 +126,16 @@ public class PilhaRubroNegra {
 
     public static void main(String[] args) {
         PilhaRubroNegra teste = new PilhaRubroNegra(4);
-        teste.pushNegro("😊");
-        teste.pushRubro("🌟");
-        teste.pushNegro("🐱");
-        teste.pushRubro("🐶");
-        teste.pushNegro("🐭"); // linha 1 da saída
+        teste.pushRubro("R");
+        teste.pushRubro("U");
+        teste.pushRubro("B");
+        teste.pushRubro("R");
+        teste.pushRubro("O");
+        teste.pushNegro("N");
+        teste.pushNegro("E");
+        teste.pushNegro("G");
+        teste.pushNegro("R");
+        teste.pushNegro("O");
         teste.status();
     }
 }
