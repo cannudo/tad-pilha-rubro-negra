@@ -10,19 +10,23 @@ public class PilhaRubroNegra {
     }
 
     public void duplicarTamanho() {
+        int quantosNegros = this.getContagemNegrosEmpilhados();
+        int quantosRubros = this.getContagemRubrosEmpilhados();
         int tamanhoAntigo = this.getCapacidade();
-        int novoTamanho = tamanhoAntigo * 2;
-        String[] auxiliar = new String[novoTamanho];
-        for (int i = 0; i <= this.topIndexRubro; i++) {
-            auxiliar[i] = this.pilha[i];
+        String copia[] = new String[capacidade];
+        for(int i = 0; i < this.getCapacidade(); i++) {
+            copia[i] = this.pilha[i];
         }
-        int deslocamento = novoTamanho - tamanhoAntigo;
-        for (int i = tamanhoAntigo; i > this.topIndexNegro; i--) {
-            auxiliar[i + deslocamento - 1] = this.pilha[i - 1];
-        }    
-        this.pilha = auxiliar;
-        this.capacidade = novoTamanho;
-        this.topIndexNegro += deslocamento;
+        this.pilha = new String[tamanhoAntigo * 2];
+        this.capacidade = tamanhoAntigo * 2;
+        this.topIndexRubro = -1;
+        this.topIndexNegro = this.getCapacidade();
+        for(int i = 0; i < quantosRubros; i++) {
+            this.pushRubro(copia[i]);
+        }
+        for(int i = quantosNegros; i > 0; i--) {
+            this.pushNegro(copia[i]);
+        }
     }
     
     public int getContagemNegrosEmpilhados() {
@@ -125,20 +129,12 @@ public class PilhaRubroNegra {
     }
 
     public static void main(String[] args) {
-        PilhaRubroNegra teste = new PilhaRubroNegra(10);
+        PilhaRubroNegra teste = new PilhaRubroNegra(2);
         teste.pushRubro("R");
         teste.pushRubro("U");
         teste.pushRubro("B");
         teste.pushRubro("R");
         teste.pushRubro("O");
-        teste.pushRubro("FIM-RUBRO");
-        teste.pushNegro("FIM-NEGRO");
-        teste.pushNegro("FIM-NEGRO2");
-        teste.pushNegro("N");
-        teste.pushNegro("E");
-        teste.pushNegro("G");
-        teste.pushNegro("R");
-        teste.pushNegro("O");
         teste.status();
     }
 }
