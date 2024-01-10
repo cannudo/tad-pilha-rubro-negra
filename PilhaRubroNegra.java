@@ -10,19 +10,19 @@ public class PilhaRubroNegra {
     }
 
     public void duplicarTamanho() {
-        int tamanho_antigo = this.getCapacidade();
-        int novo_tamanho = tamanho_antigo * 2;
-        String[] auxiliar = new String[novo_tamanho];
-        for(int i = 0; i < this.getContagemRubrosEmpilhados(); i++) {
-            auxiliar[i] = pilha[i];
+        int tamanhoAntigo = this.getCapacidade();
+        int novoTamanho = tamanhoAntigo * 2;
+        String[] auxiliar = new String[novoTamanho];
+        for (int i = 0; i <= this.topIndexRubro; i++) {
+            auxiliar[i] = this.pilha[i];
         }
-        for(int i = getContagemNegrosEmpilhados() -1; i > -1; i--) {
-            auxiliar[novo_tamanho - i - 1] = pilha[tamanho_antigo - i - 1];
-        }        
-        this.setCapacidade(novo_tamanho);
+        int deslocamento = novoTamanho - tamanhoAntigo;
+        for (int i = tamanhoAntigo; i > this.topIndexNegro; i--) {
+            auxiliar[i + deslocamento - 1] = this.pilha[i - 1];
+        }    
         this.pilha = auxiliar;
-        this.topIndexNegro = novo_tamanho - 1;
-        this.topIndexRubro = this.getContagemRubrosEmpilhados() - 1;
+        this.capacidade = novoTamanho;
+        this.topIndexNegro += deslocamento;
     }
     
     public int getContagemNegrosEmpilhados() {
@@ -125,12 +125,15 @@ public class PilhaRubroNegra {
     }
 
     public static void main(String[] args) {
-        PilhaRubroNegra teste = new PilhaRubroNegra(4);
+        PilhaRubroNegra teste = new PilhaRubroNegra(10);
         teste.pushRubro("R");
         teste.pushRubro("U");
         teste.pushRubro("B");
         teste.pushRubro("R");
         teste.pushRubro("O");
+        teste.pushRubro("FIM-RUBRO");
+        teste.pushNegro("FIM-NEGRO");
+        teste.pushNegro("FIM-NEGRO2");
         teste.pushNegro("N");
         teste.pushNegro("E");
         teste.pushNegro("G");
