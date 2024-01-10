@@ -17,16 +17,22 @@ public class PilhaRubroNegra {
         for(int i = 0; i < this.getCapacidade(); i++) {
             copia[i] = this.pilha[i];
         }
-        this.pilha = new String[tamanhoAntigo * 2];
         this.capacidade = tamanhoAntigo * 2;
         this.topIndexRubro = -1;
         this.topIndexNegro = this.getCapacidade();
-        for(int i = 0; i < quantosRubros; i++) {
+        this.pilha = new String[tamanhoAntigo * 2];
+        System.out.println();
+        for(int i = 0; i < tamanhoAntigo; i++) {
             this.pushRubro(copia[i]);
+            System.out.println("Copiando: " + copia[i]);
         }
-        for(int i = quantosNegros; i > 0; i--) {
-            this.pushNegro(copia[i]);
-        }
+        /*for(int i = 0; i < quantosNegros; i++) {
+            this.pushNegro(copia[tamanhoAntigo + i]);
+        }*/
+        /*for(int i = 0; i < quantosRubros; i++) {
+            this.pushRubro(copia[tamanhoAntigo + quantosNegros + i]);
+        }*/
+        System.out.println();
     }
     
     public int getContagemNegrosEmpilhados() {
@@ -38,12 +44,16 @@ public class PilhaRubroNegra {
     }
 
     public void pushRubro(String dado) {
+       System.out.println("TopIndexRubro: " + this.topIndexRubro); 
         if(!this.isFull()) {
             this.topIndexRubro++;
             this.pilha[this.topIndexRubro] = dado;
+            System.out.println("Empilhado: " + dado);
         } else {
+            System.out.println("Duplicando tamanho...");
             this.duplicarTamanho();
             this.pushRubro(dado);
+            System.out.println("Empilhado: " + dado);
         }
     }
 
@@ -129,12 +139,11 @@ public class PilhaRubroNegra {
     }
 
     public static void main(String[] args) {
-        PilhaRubroNegra teste = new PilhaRubroNegra(2);
-        teste.pushRubro("R");
-        teste.pushRubro("U");
-        teste.pushRubro("B");
-        teste.pushRubro("R");
-        teste.pushRubro("O");
-        teste.status();
+        PilhaRubroNegra teste = new PilhaRubroNegra(1);
+        teste.pushRubro("Rubro");
+        teste.pushRubro("Rubr");
+        for(int i = 0; i < teste.getCapacidade(); i++) {
+            System.out.println(i);
+        }
     }
 }
