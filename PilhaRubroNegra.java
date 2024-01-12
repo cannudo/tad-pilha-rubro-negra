@@ -21,27 +21,17 @@ public class PilhaRubroNegra {
         this.topIndexRubro = -1;
         this.topIndexNegro = this.getCapacidade();
         this.pilha = new String[tamanhoAntigo * 2];
-        System.out.println();
         if(quantosRubros > 0) {
             for(int i = 0; i < quantosRubros; i++) {
-                this.pushRubro(copia[i] + " (🌟)");
-                System.out.println("Copiando: " + copia[i]);
+                this.pushRubro(copia[i]);
             }    
         }
         if(quantosNegros > 0) {
             for(int i = 0; i < quantosNegros; i++) {
-                this.pushNegro(copia[tamanhoAntigo - i - 1] + " (⚫)");
-                System.out.println("Copiando: " + copia[tamanhoAntigo - i - 1]);
+                this.pushNegro(copia[tamanhoAntigo - i - 1]);
             }
 
         }
-        /*for(int i = 0; i < quantosNegros; i++) {
-            this.pushNegro(copia[tamanhoAntigo + i]);
-        }*/
-        /*for(int i = 0; i < quantosRubros; i++) {
-            this.pushRubro(copia[tamanhoAntigo + quantosNegros + i]);
-        }*/
-        System.out.println();
     }
     
     public int getContagemNegrosEmpilhados() {
@@ -52,17 +42,13 @@ public class PilhaRubroNegra {
         return this.getTopIndexRubro() + 1;
     }
 
-    public void pushRubro(String dado) {
-       System.out.println("TopIndexRubro: " + this.topIndexRubro); 
+    public void pushRubro(String dado) { 
         if(!this.isFull()) {
             this.topIndexRubro++;
             this.pilha[this.topIndexRubro] = dado;
-            System.out.println("Empilhado: " + dado);
         } else {
-            System.out.println("Duplicando tamanho...");
             this.duplicarTamanho();
             this.pushRubro(dado);
-            System.out.println("Empilhado: " + dado);
         }
     }
 
@@ -158,12 +144,10 @@ public class PilhaRubroNegra {
         teste.pushNegro("ÚLTIMO");
         teste.pushNegro("Olá, mundo! 🤡");
         //teste.duplicarTamanho();
+        System.out.println();
 
         /* Ou seja: duplicar e fazer os pushsRubros() para as posições equivalentes
          * está OK
          */
-        for(int i = 0; i < teste.getCapacidade(); i++) {
-            System.out.println(i);
-        }
     }
 }
