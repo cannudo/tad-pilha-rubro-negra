@@ -22,9 +22,11 @@ public class PilhaRubroNegra {
         this.topIndexNegro = this.getCapacidade();
         this.pilha = new String[tamanhoAntigo * 2];
         System.out.println();
-        for(int i = 0; i < tamanhoAntigo; i++) {
-            this.pushRubro(copia[i]);
-            System.out.println("Copiando: " + copia[i]);
+        if(quantosRubros > 0) {
+            for(int i = 0; i < quantosRubros; i++) {
+                this.pushRubro(copia[i] + " (🌟)");
+                System.out.println("Copiando: " + copia[i]);
+            }    
         }
         /*for(int i = 0; i < quantosNegros; i++) {
             this.pushNegro(copia[tamanhoAntigo + i]);
@@ -139,9 +141,17 @@ public class PilhaRubroNegra {
     }
 
     public static void main(String[] args) {
-        PilhaRubroNegra teste = new PilhaRubroNegra(1);
+        PilhaRubroNegra teste = new PilhaRubroNegra(2);
         teste.pushRubro("Rubro");
         teste.pushRubro("Rubr");
+        teste.status();
+        teste.pushRubro("índice 2");
+        teste.pushNegro("POR TRÁS");
+        teste.duplicarTamanho();
+
+        /* Ou seja: duplicar e fazer os pushsRubros() para as posições equivalentes
+         * está OK
+         */
         for(int i = 0; i < teste.getCapacidade(); i++) {
             System.out.println(i);
         }
