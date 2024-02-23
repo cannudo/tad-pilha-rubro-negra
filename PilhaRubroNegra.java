@@ -78,12 +78,25 @@ public class PilhaRubroNegra {
         }
     }
 
+    public String popRubro() {
+        String elemento = null;
+        if(!this.isEmpty()) {
+            elemento = this.pilha[this.getTopIndexRubro()];
+            this.pilha[this.getTopIndexRubro()] = null;
+            this.topIndexRubro--;
+        } else {
+            throw new PilhaVaziaException("popRubro(): nenhum elemento para remover.");
+        }
+
+        return elemento;
+    }
+
     public boolean isEmpty() {
-        return (this.topIndexNegro == -1 && this.topIndexRubro == this.capacidade);
+        return (this.topIndexRubro == -1 && this.topIndexNegro == this.capacidade);
     }
 
     public boolean isFull() {
-        return (this.topIndexRubro + 1 == this.topIndexNegro);
+        return (!this.isEmpty() && this.topIndexRubro + 1 == this.topIndexNegro);
     }
 
     public int getCapacidade() {
@@ -134,20 +147,15 @@ public class PilhaRubroNegra {
     }
 
     public static void main(String[] args) {
-        PilhaRubroNegra teste = new PilhaRubroNegra(2);
-        teste.pushRubro("Rubro");
-        teste.pushRubro("Rubr");
-        //teste.pushRubro("Rubr");
-        //teste.status();
-        //teste.pushRubro("índice 2");
-        teste.pushNegro("POR TRÁS");
-        teste.pushNegro("ÚLTIMO");
-        teste.pushNegro("Olá, mundo! 🤡");
-        //teste.duplicarTamanho();
+        PilhaRubroNegra teste = new PilhaRubroNegra(1);
+        teste.pushRubro("R0");
+        teste.pushNegro("N0");
+        teste.popRubro();
+        teste.pushNegro("N1");
+        teste.pushNegro("N2");
+        teste.pushRubro("R1");
+        teste.pushRubro("R2");
         System.out.println();
-
-        /* Ou seja: duplicar e fazer os pushsRubros() para as posições equivalentes
-         * está OK
-         */
+        teste.status();
     }
 }
