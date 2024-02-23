@@ -91,6 +91,19 @@ public class PilhaRubroNegra {
         return elemento;
     }
 
+    public String popNegro() {
+        String elemento = null;
+        if(!this.isEmpty()) {
+            elemento = this.pilha[this.getTopIndexNegro()];
+            this.pilha[this.getTopIndexNegro()] = null;
+            this.topIndexNegro++;
+        } else {
+            throw new PilhaVaziaException("popNegro(): nenhum elemento para remover.");
+        }
+
+        return elemento;
+    }
+
     public boolean isEmpty() {
         return (this.topIndexRubro == -1 && this.topIndexNegro == this.capacidade);
     }
@@ -148,13 +161,13 @@ public class PilhaRubroNegra {
 
     public static void main(String[] args) {
         PilhaRubroNegra teste = new PilhaRubroNegra(1);
-        teste.pushRubro("R0");
         teste.pushNegro("N0");
-        teste.popRubro();
+        teste.popNegro();
         teste.pushNegro("N1");
         teste.pushNegro("N2");
-        teste.pushRubro("R1");
-        teste.pushRubro("R2");
+        teste.popNegro();
+        teste.popNegro();
+        teste.popNegro();
         System.out.println();
         teste.status();
     }
