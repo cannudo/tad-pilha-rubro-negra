@@ -10,8 +10,8 @@ public class PilhaRubroNegra {
     }
 
     public void duplicarTamanho() {
-        int quantosNegros = this.getContagemNegrosEmpilhados();
-        int quantosRubros = this.getContagemRubrosEmpilhados();
+        int quantosNegros = this.getTamanhoPilhaNegra();
+        int quantosRubros = this.getTamanhoPilhaRubro();
         int tamanhoAntigo = this.getCapacidade();
         String copia[] = new String[capacidade];
         for(int i = 0; i < this.getCapacidade(); i++) {
@@ -34,16 +34,16 @@ public class PilhaRubroNegra {
         }
     }
     
-    public int getContagemNegrosEmpilhados() {
+    public int getTamanhoPilhaNegra() {
         return this.getCapacidade() - this.getTopIndexNegro();
     }
 
-    public int getContagemRubrosEmpilhados() {
+    public int getTamanhoPilhaRubro() {
         return this.getTopIndexRubro() + 1;
     }
 
     public void pushRubro(String dado) { 
-        if(!this.isFull()) {
+        if(!this.estaCheia()) {
             this.topIndexRubro++;
             this.pilha[this.topIndexRubro] = dado;
         } else {
@@ -53,7 +53,7 @@ public class PilhaRubroNegra {
     }
 
     public void pushNegro(String dado) {
-        if (!this.isFull()) {
+        if (!this.estaCheia()) {
             this.topIndexNegro--;
             this.pilha[this.topIndexNegro] = dado;
         } else {
@@ -63,7 +63,7 @@ public class PilhaRubroNegra {
     }
 
     public String topRubro() {
-        if(this.isEmpty()) {
+        if(this.estaVazia()) {
             throw new PilhaVaziaException("topRubro(): Pilha vazia.");
         } else {
             return this.pilha[this.topIndexRubro];
@@ -71,7 +71,7 @@ public class PilhaRubroNegra {
     }
 
     public String topNegro() {
-        if(this.isEmpty()) {
+        if(this.estaVazia()) {
             throw new PilhaVaziaException("topNegro(): Pilha vazia.");
         } else {
             return this.pilha[this.topIndexNegro];
@@ -80,7 +80,7 @@ public class PilhaRubroNegra {
 
     public String popRubro() {
         String elemento = null;
-        if(!this.isEmpty()) {
+        if(!this.estaVazia()) {
             elemento = this.pilha[this.getTopIndexRubro()];
             this.pilha[this.getTopIndexRubro()] = null;
             this.topIndexRubro--;
@@ -93,7 +93,7 @@ public class PilhaRubroNegra {
 
     public String popNegro() {
         String elemento = null;
-        if(!this.isEmpty()) {
+        if(!this.estaVazia()) {
             elemento = this.pilha[this.getTopIndexNegro()];
             this.pilha[this.getTopIndexNegro()] = null;
             this.topIndexNegro++;
@@ -104,12 +104,12 @@ public class PilhaRubroNegra {
         return elemento;
     }
 
-    public boolean isEmpty() {
+    public boolean estaVazia() {
         return (this.topIndexRubro == -1 && this.topIndexNegro == this.capacidade);
     }
 
-    public boolean isFull() {
-        return (!this.isEmpty() && this.topIndexRubro + 1 == this.topIndexNegro);
+    public boolean estaCheia() {
+        return (!this.estaVazia() && this.topIndexRubro + 1 == this.topIndexNegro);
     }
 
     public int getCapacidade() {
@@ -132,13 +132,13 @@ public class PilhaRubroNegra {
         System.out.println("Capacidade: " + this.getCapacidade());
         System.out.println("TopIndexNegro: " + this.getTopIndexNegro());
         System.out.println("TopIndexRubro: " + this.getTopIndexRubro());
-        System.out.println("Está vazia? " + (this.isEmpty() ? "Sim" : "Não"));
-        System.out.println("Está cheia? " + (this.isFull() ? "Sim" : "Não"));
-        if(!this.isEmpty()) {
+        System.out.println("Está vazia? " + (this.estaVazia() ? "Sim" : "Não"));
+        System.out.println("Está cheia? " + (this.estaCheia() ? "Sim" : "Não"));
+        if(!this.estaVazia()) {
             System.out.println("Pilha: ");
             this.listarStrings();
-            System.out.println("Contagem de dados rubros empilhados: " + this.getContagemRubrosEmpilhados());
-            System.out.println("Contagem de dados negros empilhados: " + this.getContagemNegrosEmpilhados());
+            System.out.println("Contagem de dados rubros empilhados: " + this.getTamanhoPilhaRubro());
+            System.out.println("Contagem de dados negros empilhados: " + this.getTamanhoPilhaNegra());
         }
     }
 
@@ -175,15 +175,16 @@ public class PilhaRubroNegra {
         teste.popRubro();
         teste.status();
         // teste.popRubro(); // TODO: tratar exceptions
-        System.out.println(teste.isEmpty());
+        System.out.println(teste.estaVazia());
         teste.pushRubro("9");
         teste.status();
         teste.pushRubro("7");
         teste.status();
         teste.pushRubro("3");
         teste.status();
+        teste.pushRubro("5");
         // teste.size(); // Era pra sair 4 TODO
-        teste.popRubro(); 
+        teste.popRubro();
         teste.status();
         teste.pushRubro("8");
         teste.status();
