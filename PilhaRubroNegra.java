@@ -161,14 +161,35 @@ public class PilhaRubroNegra {
 
     public static void main(String[] args) {
         PilhaRubroNegra teste = new PilhaRubroNegra(1);
-        teste.pushNegro("N0");
-        teste.popNegro();
-        teste.pushNegro("N1");
-        teste.pushNegro("N2");
-        teste.popNegro();
-        teste.popNegro();
-        teste.popNegro();
-        System.out.println();
+        teste.pushRubro("5");
+        teste.status();
+        teste.pushRubro("3");
+        teste.status();
+        teste.popRubro();
+        teste.status();
+        teste.pushRubro("7");
+        teste.status();
+        teste.popRubro();
+        teste.status();
+        System.out.println(teste.topRubro());
+        teste.popRubro();
+        teste.status();
+        // teste.popRubro(); // TODO: tratar exceptions
+        System.out.println(teste.isEmpty());
+        teste.pushRubro("9");
+        teste.status();
+        teste.pushRubro("7");
+        teste.status();
+        teste.pushRubro("3");
+        teste.status();
+        // teste.size(); // Era pra sair 4 TODO
+        teste.popRubro(); 
+        teste.status();
+        teste.pushRubro("8");
+        teste.status();
+        teste.popRubro(); 
+        teste.status();
+        teste.popRubro(); 
         teste.status();
     }
 }
