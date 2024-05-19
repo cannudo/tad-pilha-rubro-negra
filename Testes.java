@@ -1,12 +1,21 @@
 public class Testes {
     public static void main(String[] args) {
-        PilhaNegra pilha_negra = new PilhaNegra(5);
-        for(int i = pilha_negra.getTamanho() - 1; i > -1; i--) {
-            pilha_negra.push(i);
+        PilhaRubro rubro = new PilhaRubro(3);
+        PilhaNegra negra = new PilhaNegra(3);
+        PilhaRubroNegra rubroNegra = new PilhaRubroNegra(3);
+        for(int i = 0; i < 4; i++) {
+            rubro.push(i);
+            negra.push(i);
+            rubroNegra.pushRubro(" " + i + " ");
+            rubroNegra.pushNegro(" " + i + " ");
         }
-        for(int i = pilha_negra.getTamanho() - 1; i > -1; i--) {
-            pilha_negra.pop();
+
+        for(int i = 0; i < 4; i++) {
+            rubro.pop();
+            negra.pop();
+            rubroNegra.popRubro();
+            rubroNegra.popNegro();
         }
-        pilha_negra.status();
+        System.out.println();
     }
 }

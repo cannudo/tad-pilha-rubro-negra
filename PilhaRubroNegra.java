@@ -158,39 +158,4 @@ public class PilhaRubroNegra {
     public String getStringNaPosicao(int posicao) {
         return pilha[posicao];
     }
-
-    public static void main(String[] args) {
-        PilhaRubroNegra teste = new PilhaRubroNegra(1);
-        teste.pushRubro("5");
-        teste.status();
-        teste.pushRubro("3");
-        teste.status();
-        teste.popRubro();
-        teste.status();
-        teste.pushRubro("7");
-        teste.status();
-        teste.popRubro();
-        teste.status();
-        System.out.println(teste.topRubro());
-        teste.popRubro();
-        teste.status();
-        // teste.popRubro(); // TODO: tratar exceptions
-        System.out.println(teste.estaVazia());
-        teste.pushRubro("9");
-        teste.status();
-        teste.pushRubro("7");
-        teste.status();
-        teste.pushRubro("3");
-        teste.status();
-        teste.pushRubro("5");
-        // teste.size(); // Era pra sair 4 TODO
-        teste.popRubro();
-        teste.status();
-        teste.pushRubro("8");
-        teste.status();
-        teste.popRubro(); 
-        teste.status();
-        teste.popRubro(); 
-        teste.status();
-    }
 }
