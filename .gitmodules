@@ -1,0 +1,3 @@
+[submodule "lista-encadeada-simples"]
+	path = lista-encadeada-simples
+	url = https://github.com/cannudo/lista-encadeada-simples.git
