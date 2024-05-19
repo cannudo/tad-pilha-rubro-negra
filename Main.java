@@ -38,8 +38,10 @@ class Main {
     public static void imprimir_menu() {
         System.out.println("");
         System.out.println("0 - Ver status da pilha");
-        System.out.println("1 - Adicionar elemento");
-        System.out.println("2 - Remover elemento");
+        System.out.println("1 - Push rubro");
+        System.out.println("2 - Push negro");
+        System.out.println("3 - Pop rubro");
+        System.out.println("4 - Pop negro");
         System.out.println("99 - Sair");
     }
 
@@ -50,26 +52,25 @@ class Main {
             pedir_numero_maior_que_zero();
             capacidade = ler_inteiro(leitor);
         }
-        PilhaRubro pilha_rubro = new PilhaRubro(capacidade);
-
+        PilhaRubroNegra pilha = new PilhaRubroNegra(capacidade);
         while(opcao != 99) {
             imprimir_menu();
             opcao = ler_inteiro(leitor);
             switch(opcao) {
                 case 0:
-                    status_da_pilha(pilha_rubro);
+                    pilha.status();
                     break;
                 case 1:
-                    System.out.print("Digite um numero: ");
-                    int numero = ler_inteiro(leitor);
-                    pilha_rubro.push(numero);
+                    pilha.pushRubro("0");
                     break;
                 case 2:
-                    try {
-                        System.out.println("Elemento removido: " + pilha_rubro.pop());
-                    } catch(PilhaVaziaException e) {
-                        System.out.println(e.getMessage());
-                    }
+                    pilha.pushNegro("1");
+                    break;
+                case 3:
+                    pilha.popRubro();
+                    break;
+                case 4:
+                    pilha.popNegro();
                     break;
                 case 99:
                     System.out.println("Saindo...");
