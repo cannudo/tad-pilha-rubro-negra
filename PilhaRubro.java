@@ -82,16 +82,23 @@ public class PilhaRubro {
     //    }
     //}
 
-    public boolean isEmpty() {
+    public boolean estaVazia() {
         return this.getTopo() == -1;
     }
 
-    public int size() {
+    public boolean estaCheia() {
+        return this.getTopo() + 1 == this.getCapacidade();
+    }
+
+    public int tamanho() {
         return this.getTopo() + 1;
     }
 
     public static void main(String[] args) {
-        PilhaRubro pilha = new PilhaRubro(5);
+        PilhaRubro pilha = new PilhaRubro(1);
+        System.out.println("Deus, sou eu de novo. Me ajude a debugar.");
+        System.out.println(pilha.estaVazia());
+        System.out.println(pilha.estaCheia());
         System.out.println("Deus, sou eu de novo. Me ajude a debugar.");
     }
 
